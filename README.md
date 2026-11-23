@@ -17,11 +17,13 @@ usage.
 | [`03_OpenAI_API/main.py`](03_OpenAI_API/main.py) | Sends a chat-completion request to OpenAI using the OpenAI Python SDK. |
 | [`03_OpenAI_API/gemini_openai.py`](03_OpenAI_API/gemini_openai.py) | Calls Gemini through the OpenAI-compatible API endpoint and prints the generated text. |
 | [`03_OpenAI_API/gemini.py`](03_OpenAI_API/gemini.py) | Calls Gemini directly through Google's Gen AI Python SDK and prints the generated text. |
-| [`04_prompts/`](04_prompts/) | Examples of prompt-engineering techniques using Gemini. |
+| [`04_prompts/`](04_prompts/) | Examples of prompt-engineering techniques using Gemini and Groq. |
 | [`04_prompts/01_zeroShot.py`](04_prompts/01_zeroShot.py) | Demonstrates zero-shot prompting by giving the model instructions without examples. |
 | [`04_prompts/02_fewShot.py`](04_prompts/02_fewShot.py) | Demonstrates few-shot prompting by including example question-and-answer pairs to guide the model's responses. |
 | [`04_prompts/03_chainOfThought.py`](04_prompts/03_chainOfThought.py) | Demonstrates a staged prompt with JSON-formatted START, PLAN, and OUTPUT messages, including a manually supplied assistant message. |
-| [`requirements.txt`](requirements.txt) | Pinned Python dependencies for the tokenization, embedding, OpenAI, and Gemini examples. |
+| [`04_prompts/04_automatedCOT.py`](04_prompts/04_automatedCOT.py) | Demonstrates a bounded multi-turn Gemini conversation using JSON steps. |
+| [`04_prompts/05_personaBased.py`](04_prompts/05_personaBased.py) | Demonstrates persona-based prompting through Groq's OpenAI-compatible API. |
+| [`requirements.txt`](requirements.txt) | Pinned Python dependencies for the tokenization, embedding, OpenAI, Gemini, and Groq examples. |
 
 The embedding demo generates `embeddings.npy`, `embeddings_demo.db`, and (when
 FAISS is installed) `embeddings.faiss` in the current directory. These generated
@@ -29,16 +31,18 @@ files and local Python virtual environments are excluded from Git.
 
 ## API examples
 
-The API examples make live requests and require API keys. Create
-`03_OpenAI_API/.env` locally with the key or keys needed for the scripts:
+The API examples make live requests and require API keys. Create a `.env` file
+in the repository root with the key or keys needed for the scripts:
 
 ```dotenv
 GEMINI_API_KEY=your_gemini_api_key
+GROQ_API_KEY=your_groq_api_key
 OPENAI_API_KEY=your_openai_api_key
 ```
 
-The Gemini scripts use `GEMINI_API_KEY`; `main.py` uses `OPENAI_API_KEY`. The
-`.env` file is ignored by Git and should never be committed.
+The Gemini scripts use `GEMINI_API_KEY`; `05_personaBased.py` uses
+`GROQ_API_KEY`; `03_OpenAI_API/main.py` uses `OPENAI_API_KEY`. The `.env` file
+is ignored by Git and should never be committed.
 
 Run an API example from the repository root:
 
@@ -46,6 +50,7 @@ Run an API example from the repository root:
 python 03_OpenAI_API/gemini.py
 python 03_OpenAI_API/gemini_openai.py
 python 03_OpenAI_API/main.py
+python 04_prompts/05_personaBased.py
 ```
 
 ## Getting started
