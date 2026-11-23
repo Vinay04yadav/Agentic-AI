@@ -6,6 +6,11 @@ venv/
 __pycache__/
 *.py[cod]
 
+# Generated embedding demo outputs
+/embeddings.faiss
+/embeddings.npy
+/embeddings_demo.db
+
 # Local environment variables
 .env
 .env.*
