@@ -17,6 +17,10 @@ usage.
 | [`03_OpenAI_API/main.py`](03_OpenAI_API/main.py) | Sends a chat-completion request to OpenAI using the OpenAI Python SDK. |
 | [`03_OpenAI_API/gemini_openai.py`](03_OpenAI_API/gemini_openai.py) | Calls Gemini through the OpenAI-compatible API endpoint and prints the generated text. |
 | [`03_OpenAI_API/gemini.py`](03_OpenAI_API/gemini.py) | Calls Gemini directly through Google's Gen AI Python SDK and prints the generated text. |
+| [`04_prompts/`](04_prompts/) | Examples of prompt-engineering techniques using Gemini. |
+| [`04_prompts/01_zeroShot.py`](04_prompts/01_zeroShot.py) | Demonstrates zero-shot prompting by giving the model instructions without examples. |
+| [`04_prompts/02_fewShot.py`](04_prompts/02_fewShot.py) | Demonstrates few-shot prompting by including example question-and-answer pairs to guide the model's responses. |
+| [`04_prompts/03_chainOfThought.py`](04_prompts/03_chainOfThought.py) | Demonstrates a staged prompt with JSON-formatted START, PLAN, and OUTPUT messages, including a manually supplied assistant message. |
 | [`requirements.txt`](requirements.txt) | Pinned Python dependencies for the tokenization, embedding, OpenAI, and Gemini examples. |
 
 The embedding demo generates `embeddings.npy`, `embeddings_demo.db`, and (when
