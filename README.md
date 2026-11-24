@@ -23,6 +23,10 @@ usage.
 | [`04_prompts/03_chainOfThought.py`](04_prompts/03_chainOfThought.py) | Demonstrates a staged prompt with JSON-formatted START, PLAN, and OUTPUT messages, including a manually supplied assistant message. |
 | [`04_prompts/04_automatedCOT.py`](04_prompts/04_automatedCOT.py) | Demonstrates a bounded multi-turn Gemini conversation using JSON steps. |
 | [`04_prompts/05_personaBased.py`](04_prompts/05_personaBased.py) | Demonstrates persona-based prompting through Groq's OpenAI-compatible API. |
+| [`05_weatherAgent/`](05_weatherAgent/) | Weather-agent examples using Groq and wttr.in. |
+| [`05_weatherAgent/main.py`](05_weatherAgent/main.py) | Introduces Groq chat completions and fetches weather directly from wttr.in. |
+| [`05_weatherAgent/agent.py`](05_weatherAgent/agent.py) | Uses Groq's native function-calling flow to look up weather and return the result to the model. |
+| [`05_weatherAgent/agent_json_steps.py`](05_weatherAgent/agent_json_steps.py) | Demonstrates a separate JSON-step approach for requesting and handling a weather lookup. |
 | [`requirements.txt`](requirements.txt) | Pinned Python dependencies for the tokenization, embedding, OpenAI, Gemini, and Groq examples. |
 
 The embedding demo generates `embeddings.npy`, `embeddings_demo.db`, and (when
@@ -40,9 +44,9 @@ GROQ_API_KEY=your_groq_api_key
 OPENAI_API_KEY=your_openai_api_key
 ```
 
-The Gemini scripts use `GEMINI_API_KEY`; `05_personaBased.py` uses
-`GROQ_API_KEY`; `03_OpenAI_API/main.py` uses `OPENAI_API_KEY`. The `.env` file
-is ignored by Git and should never be committed.
+The Gemini scripts use `GEMINI_API_KEY`; `05_personaBased.py` and the
+`05_weatherAgent` scripts use `GROQ_API_KEY`; `03_OpenAI_API/main.py` uses
+`OPENAI_API_KEY`. The `.env` file is ignored by Git and should never be committed.
 
 Run an API example from the repository root:
 
@@ -51,6 +55,9 @@ python 03_OpenAI_API/gemini.py
 python 03_OpenAI_API/gemini_openai.py
 python 03_OpenAI_API/main.py
 python 04_prompts/05_personaBased.py
+python 05_weatherAgent/main.py
+python 05_weatherAgent/agent.py
+python 05_weatherAgent/agent_json_steps.py
 ```
 
 ## Getting started
