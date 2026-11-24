@@ -23,7 +23,17 @@ user_query = input(">>> ")
 # Now we need to do similarity search on query and db
 search_result = vector_db.similarity_search(query=user_query) # Relevant chunks are returned in search_results
 
-context = "\n\n\n".join([f"Page Content: {result.page_content}\nPage Number: {result.metadata['page_label']}\nFile Location: {result.metadata['source']}" for result in search_result])
+# This variable collects the PDF passages returned by the similarity search, along with each passage’s page number and source path. Those details are added to the system prompt so the model can answer from the retrieved material and point us to the relevant page.
+context_parts = []
+
+for result in search_result:
+    context_parts.append(
+        f"Page Content: {result.page_content}\n"
+        f"Page Number: {result.metadata['page_label']}\n"
+        f"File Location: {result.metadata['source']}"
+    )
+
+context = "\n\n\n".join(context_parts)
 
 SYSTEM_PROMPT = f"""
 You are a helpful AI Assistant who answers user query based on the available context retrieved from a PDF file along with page_contents and page number.
