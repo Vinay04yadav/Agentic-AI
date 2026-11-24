@@ -29,6 +29,7 @@ usage, tool calling, and retrieval-augmented generation (RAG).
 | [`05_weatherAgent/agent_json_steps.py`](05_weatherAgent/agent_json_steps.py) | Demonstrates a separate JSON-step approach for requesting and handling a weather lookup. |
 | [`06_RAG/`](06_RAG/) | A basic PDF indexing example using local embeddings and Qdrant. |
 | [`06_RAG/index.py`](06_RAG/index.py) | Loads `NodeJSNotes.pdf`, splits its pages into overlapping chunks, embeds them with `all-MiniLM-L6-v2`, and indexes them in Qdrant. |
+| [`06_RAG/chat.py`](06_RAG/chat.py) | Embeds a user question with the same local model, retrieves similar PDF chunks from Qdrant, and asks Groq to answer using that context. |
 | [`06_RAG/NodeJSNotes.pdf`](06_RAG/NodeJSNotes.pdf) | PDF document used as input for the RAG indexing example. |
 | [`06_RAG/docker-compose.yml`](06_RAG/docker-compose.yml) | Docker Compose configuration for running a local Qdrant vector database. |
 | [`requirements.txt`](requirements.txt) | Pinned Python dependencies for the tokenization, embedding, API, agent, and RAG examples. |
@@ -112,4 +113,11 @@ python 06_RAG/index.py
 ```
 
 The script stores the document chunks in the `learning_rag` Qdrant collection
-at `http://localhost:6333`.
+at `http://localhost:6333`. To ask a question against the indexed PDF, run:
+
+```bash
+python 06_RAG/chat.py
+```
+
+The chat example uses the local embedding model and requires `GROQ_API_KEY` in
+the root `.env` file to generate an answer.
