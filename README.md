@@ -42,7 +42,10 @@ usage, tool calling, and retrieval-augmented generation (RAG).
 | [`07_RAG_Queue/queues/main.py`](07_RAG_Queue/queues/main.py) | Starts the FastAPI application with Uvicorn. |
 | [`08_Image/`](08_Image/) | Example of sending an image and a text prompt to a vision-capable Groq model. |
 | [`08_Image/main.py`](08_Image/main.py) | Sends an image URL with a captioning prompt to Groq and prints the model's response. |
-| [`requirements.txt`](requirements.txt) | Pinned Python dependencies for the tokenization, embeddings, API, agents, RAG, and queue examples. |
+| [`09_Langgraph/`](09_Langgraph/) | Introductory LangGraph examples for graph state and LLM-backed nodes. |
+| [`09_Langgraph/01_chat.py`](09_Langgraph/01_chat.py) | Builds a simple graph with a shared message state, two nodes, and start/end edges. |
+| [`09_Langgraph/02_llm_chatbot.py`](09_Langgraph/02_llm_chatbot.py) | Builds a one-node LangGraph chatbot that sends system and user messages to a Groq-hosted LLM. |
+| [`requirements.txt`](requirements.txt) | Pinned Python dependencies for the tokenization, embeddings, API, agents, RAG, queue, and LangGraph examples. |
 
 The embedding demo generates `embeddings.npy`, `embeddings_demo.db`, and (when
 FAISS is installed) `embeddings.faiss` in the current directory. These generated
@@ -59,9 +62,10 @@ GROQ_API_KEY=your_groq_api_key
 OPENAI_API_KEY=your_openai_api_key
 ```
 
-The Gemini scripts use `GEMINI_API_KEY`; `05_personaBased.py` and the
-`05_weatherAgent` scripts use `GROQ_API_KEY`; `03_OpenAI_API/main.py` uses
-`OPENAI_API_KEY`. The `.env` file is ignored by Git and should never be committed.
+The Gemini scripts use `GEMINI_API_KEY`; `05_personaBased.py`, the
+`05_weatherAgent` scripts, and `09_Langgraph/02_llm_chatbot.py` use
+`GROQ_API_KEY`; `03_OpenAI_API/main.py` uses `OPENAI_API_KEY`. The `.env` file is
+ignored by Git and should never be committed.
 
 Run an API example from the repository root:
 
@@ -74,6 +78,7 @@ python 05_weatherAgent/main.py
 python 05_weatherAgent/agent.py
 python 05_weatherAgent/agent_json_steps.py
 python 08_Image/main.py
+python 09_Langgraph/02_llm_chatbot.py
 ```
 
 ## Getting started
